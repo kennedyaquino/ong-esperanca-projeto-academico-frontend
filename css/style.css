@@ -1,5 +1,32 @@
 /* ==============================
-   CONFIGURAÇÕES GERAIS
+   DESIGN SYSTEM
+================================= */
+
+:root {
+    --azul: #1B4D89;
+    --azul-escuro: #12365F;
+
+    --laranja: #F28C28;
+    --laranja-escuro: #D96F0B;
+
+    --verde: #3A9D5D;
+    --verde-escuro: #24663C;
+
+    --branco: #FFFFFF;
+
+    --cinza-claro: #F4F6F8;
+    --cinza: #666666;
+    --cinza-borda: #CCCCCC;
+
+    --texto: #333333;
+
+    --vermelho: #C0392B;
+    --vermelho-claro: #FFF5F5;
+}
+
+
+/* ==============================
+   RESET
 ================================= */
 
 * {
@@ -8,26 +35,37 @@
     box-sizing: border-box;
 }
 
-:root {
-    --azul: #1B4D89;
-    --azul-escuro: #12365F;
-    --laranja: #F28C28;
-    --verde: #3A9D5D;
-    --branco: #FFFFFF;
-    --cinza-claro: #F4F6F8;
-    --cinza: #666666;
-    --texto: #333333;
-}
 
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
     font-family: Arial, Helvetica, sans-serif;
+
     background-color: var(--cinza-claro);
+
     color: var(--texto);
+
     line-height: 1.6;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ==============================
+   CONTAINER
+================================= */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 0 auto;
 }
 
 
@@ -38,24 +76,24 @@ body {
 header {
     background-color: var(--azul);
     color: var(--branco);
+
     padding: 20px 0;
 }
 
+
 header .container {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
+
     gap: 30px;
 }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
 
 header h1 {
     font-size: 1.8rem;
+
     white-space: nowrap;
 }
 
@@ -66,22 +104,40 @@ header h1 {
 
 nav {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 }
 
+
 nav a {
     color: var(--branco);
+
     text-decoration: none;
+
     font-weight: bold;
+
     padding: 10px 15px;
+
     border-radius: 6px;
-    transition: 0.3s;
+
+    transition:
+        background-color 0.3s,
+        transform 0.3s;
 }
+
 
 nav a:hover {
     background-color: var(--laranja);
-    color: var(--branco);
+
+    transform: translateY(-2px);
+}
+
+
+nav a:focus {
+    outline: 3px solid var(--branco);
+    outline-offset: 2px;
 }
 
 
@@ -90,55 +146,36 @@ nav a:hover {
 ================================= */
 
 main {
+    width: 100%;
+
     max-width: 1200px;
+
     margin: 0 auto;
+
     padding: 40px 20px;
+
+    flex: 1;
 }
+
 
 section {
     margin-bottom: 50px;
 }
 
+
 section h2 {
     color: var(--azul);
+
     margin-bottom: 20px;
+
     font-size: 2rem;
 }
 
+
 section h3 {
     color: var(--verde);
+
     margin-bottom: 10px;
-}
-
-
-/* ==============================
-   DESTAQUE / HERO
-================================= */
-
-.hero {
-    background: linear-gradient(
-        135deg,
-        var(--azul),
-        var(--verde)
-    );
-
-    color: var(--branco);
-    padding: 60px 40px;
-    border-radius: 12px;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.hero h2 {
-    color: var(--branco);
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-.hero p {
-    max-width: 750px;
-    margin: 0 auto;
-    font-size: 1.1rem;
 }
 
 
@@ -148,41 +185,67 @@ section h3 {
 
 img {
     max-width: 100%;
+
     height: auto;
+
     display: block;
+
+    border-radius: 10px;
 }
 
-.hero img {
+
+#sobre img {
     width: 100%;
-    max-height: 400px;
+
+    max-height: 450px;
+
     object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 25px;
+
+    margin: 20px 0;
 }
 
 
 /* ==============================
-   CARDS DE PROJETOS
+   PROJETOS
 ================================= */
+
+.projetos {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 24px;
+
+    margin-top: 30px;
+}
+
 
 article {
     background-color: var(--branco);
+
     border-radius: 10px;
+
     padding: 25px;
-    margin-bottom: 25px;
 
     border-left: 5px solid var(--verde);
 
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.08);
 
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s;
 }
+
 
 article:hover {
     transform: translateY(-5px);
 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.12);
 }
+
 
 article h3 {
     font-size: 1.4rem;
@@ -190,37 +253,100 @@ article h3 {
 
 
 /* ==============================
+   BADGES
+================================= */
+
+.badge {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    margin-bottom: 12px;
+
+    border-radius: 20px;
+
+    color: var(--branco);
+
+    font-size: 0.8rem;
+
+    font-weight: bold;
+}
+
+
+.badge-verde {
+    background-color: var(--verde);
+}
+
+
+.badge-laranja {
+    background-color: var(--laranja);
+}
+
+
+.badge-azul {
+    background-color: var(--azul);
+}
+
+
+/* ==============================
    BOTÕES
 ================================= */
 
-a[href*="cadastro"],
+.botao,
+article a,
 button {
     display: inline-block;
 
     background-color: var(--laranja);
+
     color: var(--branco);
 
     border: none;
+
     border-radius: 6px;
 
     padding: 12px 22px;
 
+    margin-top: 15px;
+
     font-size: 1rem;
+
     font-weight: bold;
 
     text-decoration: none;
 
     cursor: pointer;
 
-    transition: 0.3s;
-
-    margin-top: 15px;
+    transition:
+        background-color 0.3s,
+        transform 0.3s,
+        box-shadow 0.3s;
 }
 
-a[href*="cadastro"]:hover,
+
+.botao:hover,
+article a:hover,
 button:hover {
     background-color: var(--verde);
+
     transform: translateY(-2px);
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+button:active,
+.botao:active {
+    transform: translateY(0);
+}
+
+
+button:focus,
+.botao:focus {
+    outline: 3px solid rgba(27, 77, 137, 0.25);
+
+    outline-offset: 3px;
 }
 
 
@@ -232,18 +358,22 @@ form {
     background-color: var(--branco);
 
     max-width: 700px;
-    margin: 0 auto;
+
+    margin: 30px auto;
 
     padding: 35px;
 
     border-radius: 12px;
 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
-form div {
+
+.campo {
     margin-bottom: 20px;
 }
+
 
 label {
     display: block;
@@ -255,21 +385,28 @@ label {
     color: var(--azul);
 }
 
+
 input,
 textarea {
     width: 100%;
 
     padding: 12px;
 
-    border: 1px solid #cccccc;
+    border:
+        1px solid var(--cinza-borda);
 
     border-radius: 6px;
 
     font-family: inherit;
+
     font-size: 1rem;
 
-    transition: 0.3s;
+    transition:
+        border-color 0.3s,
+        box-shadow 0.3s,
+        background-color 0.3s;
 }
+
 
 input:focus,
 textarea:focus {
@@ -277,12 +414,46 @@ textarea:focus {
 
     border-color: var(--azul);
 
-    box-shadow: 0 0 0 3px rgba(27, 77, 137, 0.15);
+    box-shadow:
+        0 0 0 3px rgba(27, 77, 137, 0.15);
 }
+
 
 textarea {
     min-height: 130px;
+
     resize: vertical;
+}
+
+
+/* ==============================
+   VALIDAÇÃO DO FORMULÁRIO
+================================= */
+
+input.campo-sucesso,
+textarea.campo-sucesso {
+    border-color: var(--verde);
+
+    background-color: #F5FFF8;
+}
+
+
+input.campo-erro,
+textarea.campo-erro {
+    border-color: var(--vermelho);
+
+    background-color: var(--vermelho-claro);
+}
+
+
+.mensagem-erro {
+    display: block;
+
+    color: var(--vermelho);
+
+    font-size: 0.85rem;
+
+    margin-top: 5px;
 }
 
 
@@ -291,7 +462,8 @@ textarea {
 ================================= */
 
 fieldset {
-    border: 1px solid #dddddd;
+    border: 1px solid #DDDDDD;
+
     border-radius: 8px;
 
     padding: 20px;
@@ -299,27 +471,126 @@ fieldset {
     margin-bottom: 20px;
 }
 
+
 legend {
     color: var(--azul);
+
     font-weight: bold;
+
     padding: 0 8px;
 }
 
+
 fieldset label {
     display: inline-block;
+
     margin-right: 20px;
+
     color: var(--texto);
+
     font-weight: normal;
 }
 
+
 fieldset input {
     width: auto;
+
     margin-right: 5px;
 }
 
 
 /* ==============================
-   ENDEREÇO / CONTATO
+   ALERTAS
+================================= */
+
+.alerta {
+    max-width: 700px;
+
+    margin: 20px auto;
+
+    padding: 16px 20px;
+
+    border-radius: 8px;
+
+    border-left: 5px solid;
+}
+
+
+.alerta-info {
+    background-color: #E8F2FC;
+
+    border-color: var(--azul);
+
+    color: var(--azul-escuro);
+}
+
+
+.alerta-sucesso {
+    background-color: #E8F6ED;
+
+    border-color: var(--verde);
+
+    color: var(--verde-escuro);
+}
+
+
+.alerta-erro {
+    background-color: #FDECEC;
+
+    border-color: var(--vermelho);
+
+    color: #922B21;
+}
+
+
+/* ==============================
+   MODAL
+================================= */
+
+.modal-exemplo {
+    position: fixed;
+
+    top: 40%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    max-width: 500px;
+    width: 90%;
+
+    padding: 30px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.25);
+
+    color: var(--texto);
+}
+
+
+.modal-exemplo h3 {
+    color: var(--verde);
+
+    margin-bottom: 10px;
+}
+
+
+.modal-exemplo p {
+    margin-bottom: 15px;
+}
+
+
+.modal-exemplo::backdrop {
+    background-color:
+        rgba(0, 0, 0, 0.5);
+}
+
+
+/* ==============================
+   CONTATO
 ================================= */
 
 address {
@@ -329,14 +600,46 @@ address {
 
     border-radius: 10px;
 
-    border-left: 5px solid var(--laranja);
+    border-left:
+        5px solid var(--laranja);
 
     font-style: normal;
+
+    margin-top: 20px;
 }
+
 
 address a {
     color: var(--azul);
+
     font-weight: bold;
+}
+
+
+/* ==============================
+   TOTAL DE COLABORADORES
+================================= */
+
+.total-colaboradores {
+    background-color: var(--branco);
+
+    padding: 15px 20px;
+
+    margin-top: 20px;
+
+    border-radius: 8px;
+
+    border-left:
+        5px solid var(--verde);
+
+    display: inline-block;
+}
+
+
+.total-colaboradores strong {
+    color: var(--verde);
+
+    font-size: 1.2rem;
 }
 
 
@@ -352,79 +655,18 @@ footer {
     text-align: center;
 
     padding: 30px 20px;
-
-    margin-top: 40px;
 }
+
 
 footer a {
     color: var(--laranja);
+
     text-decoration: none;
 }
 
+
 footer a:hover {
     text-decoration: underline;
-}
-
-/* ==============================
-   BADGES
-================================= */
-
-.badge {
-    display: inline-block;
-    padding: 5px 10px;
-    margin-bottom: 12px;
-
-    border-radius: 20px;
-
-    color: var(--branco);
-
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-.badge-verde {
-    background-color: var(--verde);
-}
-
-.badge-laranja {
-    background-color: var(--laranja);
-}
-
-.badge-azul {
-    background-color: var(--azul);
-}
-
-/* ==============================
-   ALERTAS
-================================= */
-
-.alerta {
-    max-width: 700px;
-    margin: 20px auto;
-
-    padding: 16px 20px;
-
-    border-radius: 8px;
-
-    border-left: 5px solid;
-}
-
-.alerta-info {
-    background-color: #e8f2fc;
-    border-color: var(--azul);
-    color: var(--azul-escuro);
-}
-
-.alerta-sucesso {
-    background-color: #e8f6ed;
-    border-color: var(--verde);
-    color: #24663c;
-}
-
-.alerta-erro {
-    background-color: #fdecec;
-    border-color: #c0392b;
-    color: #922b21;
 }
 
 
@@ -434,69 +676,63 @@ footer a:hover {
 
 @media (max-width: 768px) {
 
-    header {
+    header .container {
         flex-direction: column;
+
         text-align: center;
-        padding: 20px;
     }
+
 
     header h1 {
         font-size: 1.5rem;
     }
 
-    nav ul {
+
+    nav {
         flex-direction: column;
+
         width: 100%;
     }
 
+
     nav a {
         display: block;
+
+        width: 100%;
+
+        text-align: center;
     }
+
 
     main {
         padding: 25px 15px;
     }
 
-    .hero {
-        padding: 40px 20px;
+
+    .projetos {
+        grid-template-columns: 1fr;
     }
 
-    .hero h2 {
-        font-size: 2rem;
-    }
 
     form {
         padding: 25px 20px;
     }
 
+
     fieldset label {
         display: block;
+
         margin-bottom: 10px;
     }
-}
 
-/* ==============================
-   MODAL
-================================= */
 
-.modal-exemplo {
-    position: fixed;
+    .modal-exemplo {
+        width: 90%;
 
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+        padding: 20px;
+    }
 
-    max-width: 500px;
-    width: 90%;
-
-    padding: 30px;
-
-    border: none;
-    border-radius: 12px;
-
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-
-    color: var(--texto);
-
-    z-index: 1000;
+    .fieldset-erro {
+        border-color: var(--vermelho);
+    }
 }
