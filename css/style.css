@@ -6,11 +6,11 @@
     --azul: #1B4D89;
     --azul-escuro: #12365F;
 
-    --laranja: #F28C28;
-    --laranja-escuro: #D96F0B;
+    --laranja: #C65D08;
+    --laranja-escuro: #A84705;
 
-    --verde: #3A9D5D;
-    --verde-escuro: #24663C;
+    --verde: #237A45;
+    --verde-escuro: #195C33;
 
     --branco: #FFFFFF;
 
@@ -20,7 +20,7 @@
 
     --texto: #333333;
 
-    --vermelho: #C0392B;
+    --vermelho: #B42318;
     --vermelho-claro: #FFF5F5;
 }
 
@@ -54,6 +54,10 @@ body {
 
     display: flex;
     flex-direction: column;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 
@@ -131,13 +135,9 @@ nav a {
 nav a:hover {
     background-color: var(--laranja);
 
+    color: var(--branco);
+
     transform: translateY(-2px);
-}
-
-
-nav a:focus {
-    outline: 3px solid var(--branco);
-    outline-offset: 2px;
 }
 
 
@@ -274,12 +274,12 @@ article h3 {
 
 
 .badge-verde {
-    background-color: var(--verde);
+    background-color: #237A45;
 }
 
 
 .badge-laranja {
-    background-color: var(--laranja);
+    background-color: #A84705;
 }
 
 
@@ -329,6 +329,8 @@ article a:hover,
 button:hover {
     background-color: var(--verde);
 
+    color: var(--branco);
+
     transform: translateY(-2px);
 
     box-shadow:
@@ -337,14 +339,22 @@ button:hover {
 
 
 button:active,
-.botao:active {
+.botao:active,
+article a:active {
     transform: translateY(0);
 }
 
 
-button:focus,
-.botao:focus {
-    outline: 3px solid rgba(27, 77, 137, 0.25);
+/* ==============================
+   ACESSIBILIDADE / FOCO
+================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+input[type="radio"]:focus-visible {
+    outline: 3px solid #B45309;
 
     outline-offset: 3px;
 }
@@ -392,6 +402,10 @@ textarea {
 
     padding: 12px;
 
+    color: var(--texto);
+
+    background-color: var(--branco);
+
     border:
         1px solid var(--cinza-borda);
 
@@ -408,10 +422,14 @@ textarea {
 }
 
 
+input::placeholder,
+textarea::placeholder {
+    color: #6B7280;
+}
+
+
 input:focus,
 textarea:focus {
-    outline: none;
-
     border-color: var(--azul);
 
     box-shadow:
@@ -454,6 +472,11 @@ textarea.campo-erro {
     font-size: 0.85rem;
 
     margin-top: 5px;
+}
+
+
+.fieldset-erro {
+    border-color: var(--vermelho);
 }
 
 
@@ -539,7 +562,7 @@ fieldset input {
 
     border-color: var(--vermelho);
 
-    color: #922B21;
+    color: #7F1D1D;
 }
 
 
@@ -559,6 +582,8 @@ fieldset input {
     width: 90%;
 
     padding: 30px;
+
+    background-color: var(--branco);
 
     border: none;
 
@@ -585,7 +610,7 @@ fieldset input {
 
 .modal-exemplo::backdrop {
     background-color:
-        rgba(0, 0, 0, 0.5);
+        rgba(15, 23, 42, 0.70);
 }
 
 
@@ -658,8 +683,13 @@ footer {
 }
 
 
+footer p {
+    color: var(--branco);
+}
+
+
 footer a {
-    color: var(--laranja);
+    color: #FFD09A;
 
     text-decoration: none;
 }
@@ -667,6 +697,501 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+
+/* ==============================
+   BOTÃO DO TEMA
+================================= */
+
+#alternar-contraste {
+    background-color: transparent;
+
+    color: var(--branco);
+
+    border: 1px solid rgba(255, 255, 255, 0.65);
+
+    padding: 9px 14px;
+
+    margin-top: 0;
+
+    border-radius: 6px;
+
+    font-size: 0.9rem;
+}
+
+
+#alternar-contraste:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+
+    color: var(--branco);
+
+    transform: none;
+}
+
+
+/* ==========================================================
+   TEMA ESCURO ACESSÍVEL
+========================================================== */
+
+body.alto-contraste {
+    --dark-bg: #0F172A;
+    --dark-surface: #1E293B;
+    --dark-surface-hover: #273449;
+
+    --dark-border: #475569;
+
+    --dark-text: #F8FAFC;
+    --dark-text-secondary: #CBD5E1;
+
+    --dark-blue: #93C5FD;
+    --dark-green: #86EFAC;
+    --dark-orange: #FDBA74;
+    --dark-red: #FCA5A5;
+
+    background-color: var(--dark-bg);
+
+    color: var(--dark-text);
+}
+
+
+/* ==============================
+   HEADER - TEMA ESCURO
+================================= */
+
+body.alto-contraste header {
+    background-color: #172033;
+
+    color: var(--dark-text);
+
+    border-bottom:
+        1px solid var(--dark-border);
+}
+
+
+body.alto-contraste header h1 {
+    color: var(--dark-text);
+}
+
+
+/* ==============================
+   NAVEGAÇÃO - TEMA ESCURO
+================================= */
+
+body.alto-contraste nav a {
+    color: #E2E8F0;
+}
+
+
+body.alto-contraste nav a:hover {
+    background-color: #334155;
+
+    color: #FFFFFF;
+}
+
+
+/* ==============================
+   BOTÃO DO TEMA - DARK
+================================= */
+
+body.alto-contraste #alternar-contraste {
+    color: #E2E8F0;
+
+    border-color: #64748B;
+
+    background-color: #1E293B;
+}
+
+
+body.alto-contraste #alternar-contraste:hover {
+    background-color: #334155;
+
+    color: #FFFFFF;
+}
+
+
+/* ==============================
+   CONTEÚDO - TEMA ESCURO
+================================= */
+
+body.alto-contraste main {
+    color: var(--dark-text);
+}
+
+
+body.alto-contraste section h2 {
+    color: var(--dark-blue);
+}
+
+
+body.alto-contraste section h3 {
+    color: var(--dark-green);
+}
+
+
+body.alto-contraste p {
+    color: var(--dark-text-secondary);
+}
+
+
+/* ==============================
+   CARDS - TEMA ESCURO
+================================= */
+
+body.alto-contraste article {
+    background-color:
+        var(--dark-surface);
+
+    color: var(--dark-text);
+
+    border:
+        1px solid var(--dark-border);
+
+    border-left:
+        5px solid #4ADE80;
+
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+
+body.alto-contraste article:hover {
+    background-color:
+        var(--dark-surface-hover);
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+
+body.alto-contraste article h3 {
+    color: var(--dark-green);
+}
+
+
+body.alto-contraste article p {
+    color: var(--dark-text-secondary);
+}
+
+
+/* ==============================
+   BADGES - TEMA ESCURO
+================================= */
+
+body.alto-contraste .badge-verde {
+    background-color: #166534;
+
+    color: #F0FDF4;
+}
+
+
+body.alto-contraste .badge-laranja {
+    background-color: #9A3412;
+
+    color: #FFF7ED;
+}
+
+
+body.alto-contraste .badge-azul {
+    background-color: #1D4ED8;
+
+    color: #EFF6FF;
+}
+
+
+/* ==============================
+   BOTÕES - TEMA ESCURO
+================================= */
+
+body.alto-contraste .botao,
+body.alto-contraste article a,
+body.alto-contraste form button,
+body.alto-contraste .modal-exemplo button {
+    background-color: #2563EB;
+
+    color: #FFFFFF;
+
+    border: 1px solid #60A5FA;
+}
+
+
+body.alto-contraste .botao:hover,
+body.alto-contraste article a:hover,
+body.alto-contraste form button:hover,
+body.alto-contraste .modal-exemplo button:hover {
+    background-color: #1D4ED8;
+
+    color: #FFFFFF;
+}
+
+
+/* ==============================
+   FORMULÁRIO - TEMA ESCURO
+================================= */
+
+body.alto-contraste form {
+    background-color:
+        var(--dark-surface);
+
+    color: var(--dark-text);
+
+    border:
+        1px solid var(--dark-border);
+
+    box-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.30);
+}
+
+
+body.alto-contraste label,
+body.alto-contraste legend {
+    color: #BFDBFE;
+}
+
+
+body.alto-contraste input,
+body.alto-contraste textarea {
+    background-color: #0F172A;
+
+    color: #F8FAFC;
+
+    border:
+        1px solid #64748B;
+}
+
+
+body.alto-contraste input::placeholder,
+body.alto-contraste textarea::placeholder {
+    color: #94A3B8;
+}
+
+
+body.alto-contraste input:focus,
+body.alto-contraste textarea:focus {
+    border-color: #60A5FA;
+
+    box-shadow:
+        0 0 0 3px rgba(96, 165, 250, 0.25);
+}
+
+
+/* ==============================
+   VALIDAÇÃO - TEMA ESCURO
+================================= */
+
+body.alto-contraste input.campo-sucesso,
+body.alto-contraste textarea.campo-sucesso {
+    background-color: #10271C;
+
+    border-color: #4ADE80;
+
+    color: #F8FAFC;
+}
+
+
+body.alto-contraste input.campo-erro,
+body.alto-contraste textarea.campo-erro {
+    background-color: #2B1215;
+
+    border-color: #F87171;
+
+    color: #F8FAFC;
+}
+
+
+body.alto-contraste .mensagem-erro {
+    color: #FCA5A5;
+}
+
+
+/* ==============================
+   FIELDSET - TEMA ESCURO
+================================= */
+
+body.alto-contraste fieldset {
+    border-color: #64748B;
+}
+
+
+body.alto-contraste fieldset label {
+    color: var(--dark-text);
+}
+
+
+body.alto-contraste .fieldset-erro {
+    border-color: #F87171;
+}
+
+
+/* ==============================
+   ALERTAS - TEMA ESCURO
+================================= */
+
+body.alto-contraste .alerta-info {
+    background-color: #172554;
+
+    color: #DBEAFE;
+
+    border-color: #60A5FA;
+}
+
+
+body.alto-contraste .alerta-info strong {
+    color: #EFF6FF;
+}
+
+
+body.alto-contraste .alerta-sucesso {
+    background-color: #052E16;
+
+    color: #DCFCE7;
+
+    border-color: #4ADE80;
+}
+
+
+body.alto-contraste .alerta-erro {
+    background-color: #450A0A;
+
+    color: #FEE2E2;
+
+    border-color: #F87171;
+}
+
+
+/* ==============================
+   MODAL - TEMA ESCURO
+================================= */
+
+body.alto-contraste .modal-exemplo {
+    background-color:
+        var(--dark-surface);
+
+    color: var(--dark-text);
+
+    border:
+        1px solid #64748B;
+}
+
+
+body.alto-contraste .modal-exemplo h3 {
+    color: var(--dark-green);
+}
+
+
+body.alto-contraste .modal-exemplo p {
+    color: var(--dark-text-secondary);
+}
+
+
+body.alto-contraste .modal-exemplo::backdrop {
+    background-color:
+        rgba(2, 6, 23, 0.80);
+}
+
+
+/* ==============================
+   CONTATO - TEMA ESCURO
+================================= */
+
+body.alto-contraste address {
+    background-color:
+        var(--dark-surface);
+
+    color: var(--dark-text);
+
+    border:
+        1px solid var(--dark-border);
+
+    border-left:
+        5px solid var(--dark-orange);
+}
+
+
+body.alto-contraste address p {
+    color: var(--dark-text-secondary);
+}
+
+
+body.alto-contraste address strong {
+    color: var(--dark-text);
+}
+
+
+body.alto-contraste address a {
+    color: #93C5FD;
+}
+
+
+/* ==============================
+   TOTAL COLABORADORES - DARK
+================================= */
+
+body.alto-contraste .total-colaboradores {
+    background-color:
+        var(--dark-surface);
+
+    color: var(--dark-text-secondary);
+
+    border:
+        1px solid var(--dark-border);
+
+    border-left:
+        5px solid #4ADE80;
+}
+
+
+body.alto-contraste .total-colaboradores strong {
+    color: #86EFAC;
+}
+
+
+/* ==============================
+   LINKS - TEMA ESCURO
+================================= */
+
+body.alto-contraste main a:not(.botao) {
+    color: #93C5FD;
+}
+
+
+/* ==============================
+   FOCO - TEMA ESCURO
+================================= */
+
+body.alto-contraste a:focus-visible,
+body.alto-contraste button:focus-visible,
+body.alto-contraste input:focus-visible,
+body.alto-contraste textarea:focus-visible,
+body.alto-contraste input[type="radio"]:focus-visible {
+    outline:
+        3px solid #FBBF24;
+
+    outline-offset: 3px;
+}
+
+
+/* ==============================
+   FOOTER - TEMA ESCURO
+================================= */
+
+body.alto-contraste footer {
+    background-color: #020617;
+
+    color: #F8FAFC;
+
+    border-top:
+        1px solid #334155;
+}
+
+
+body.alto-contraste footer p {
+    color: #E2E8F0;
+}
+
+
+body.alto-contraste footer a {
+    color: #93C5FD;
 }
 
 
@@ -704,8 +1229,20 @@ footer a:hover {
     }
 
 
+    #alternar-contraste {
+        width: 100%;
+
+        margin-top: 5px;
+    }
+
+
     main {
         padding: 25px 15px;
+    }
+
+
+    section h2 {
+        font-size: 1.7rem;
     }
 
 
@@ -731,8 +1268,24 @@ footer a:hover {
 
         padding: 20px;
     }
+}
 
-    .fieldset-erro {
-        border-color: var(--vermelho);
+
+/* ==============================
+   REDUÇÃO DE MOVIMENTO
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
     }
 }

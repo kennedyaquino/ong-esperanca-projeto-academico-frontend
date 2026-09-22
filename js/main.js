@@ -76,6 +76,26 @@ document.addEventListener(
             fecharModal();
         }
 
+        if (event.target.matches("#alternar-contraste")) {
+            const botao = event.target;
+
+            document.body.classList.toggle(
+                "alto-contraste"
+            );
+
+            const ativo = document.body.classList.contains(
+                "alto-contraste"
+            );
+
+            botao.setAttribute(
+                "aria-pressed",
+                ativo.toString()
+            );
+
+            botao.textContent = ativo
+                ? "Contraste padrão"
+                : "Alto contraste";
+        }
     }
 );
 
